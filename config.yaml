@@ -1,0 +1,99 @@
+# Configuration for Legal Fact-Checking System
+# Ρυθμίσεις Συστήματος Επαλήθευσης Νομικής Ερμηνείας
+
+# Scoring weights (must sum to 100)
+scoring:
+  text_support: 
+    weight: 40
+    description: "Direct support from legal text"
+    
+  logic_consistency:
+    weight: 30
+    description: "Logical coherence of interpretation"
+    
+  timeline_coherence:
+    weight: 20
+    description: "Consistency of timelines and deadlines"
+    
+  precedent: 
+    weight: 10
+    description: "Support from case law precedent"
+
+# Score thresholds for categories
+categories:
+  strongly_supported: 
+    min_score: 80
+    label_greek: "Ισχυρά Υποστηριζόμενη"
+    label_english: "Strongly Supported"
+    color: "#28a745"
+    
+  moderately_supported: 
+    min_score: 65
+    label_greek: "Μετρίως Υποστηριζόμενη"
+    label_english: "Moderately Supported"
+    color: "#17a2b8"
+    
+  partially_supported:
+    min_score: 50
+    label_greek: "Μερικώς Υποστηριζόμενη"
+    label_english: "Partially Supported"
+    color: "#ffc107"
+    
+  weakly_supported:
+    min_score: 35
+    label_greek: "Αδύναμα Υποστηριζόμενη"
+    label_english: "Weakly Supported"
+    color: "#fd7e14"
+    
+  not_supported:
+    min_score: 0
+    label_greek: "Μη Υποστηριζόμενη"
+    label_english: "Not Supported"
+    color: "#dc3545"
+
+# Articles configuration
+articles:
+  critical: 
+    - "103"
+    - "143"
+    - "27"
+    - "28"
+  
+  supporting:
+    - "16"
+    - "58"
+
+# Analysis settings
+analysis:
+  verbose: true
+  generate_visualizations: true
+  include_alternative_interpretations: true
+  max_alternatives: 3
+  
+# Output settings
+output:
+  default_format: "html"
+  include_json:  true
+  include_markdown: true
+  timestamp_format: "%Y%m%d_%H%M%S"
+  
+# Language settings
+language: 
+  primary: "el"  # Greek
+  secondary: "en"  # English
+  bilingual_reports: true
+
+# Legal interpretation settings
+interpretation:
+  # The interpretation being tested
+  statement_greek: "Ο Επίσημος Παραλήπτης όφειλε να προχωρήσει την αποκατάσταση του χρεώστη στο τέλος της προθεσμίας των 6 μηνών"
+  statement_english: "The Official Receiver should have proceeded with the debtor's rehabilitation at the end of the 6-month deadline"
+  
+  # Key articles in the chain
+  article_chain:
+    - "103"
+    - "143"
+    - "58"
+    - "27"
+    - "28"
+    - "16"
